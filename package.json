@@ -1,0 +1,63 @@
+{
+  "name": "ssr-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 9090 --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "ava test/*.spec.js",
+    "lint": "npm run lint:js & npm run lint:css",
+    "lint:js": "eslint --ext .js,.vue src",
+    "lint:css": "stylelint src/**/*.css",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-kobets/ssr-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s-kobets/ssr-vue/issues"
+  },
+  "homepage": "https://github.com/s-kobets/ssr-vue#readme",
+  "dependencies": {
+    "vue": "^2.4.2",
+    "vue-server-renderer": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "browser-env": "^3.1.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "file-loader": "^0.9.0",
+    "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
+    "require-extension-hooks": "^0.3.0",
+    "require-extension-hooks-vue": "^0.4.0",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "vue-loader": "^12.1.0",
+    "vue-router": "^2.7.0",
+    "vue-template-compiler": "^2.3.3",
+    "vuex": "^2.3.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
