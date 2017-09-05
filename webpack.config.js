@@ -10,6 +10,7 @@ module.exports = {
     publicPath: 'dist/',
     filename: 'build.js'
   },
+  node: {fs: 'empty'},
   module: {
     rules: [
       {
@@ -57,6 +58,7 @@ module.exports = {
   performance: {
     hints: false
   },
+  target: 'web',
   devtool: '#eval-source-map'
 }
 
