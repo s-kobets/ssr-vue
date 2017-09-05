@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 9090 --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "dev": "node server",
+    "start": "cross-env NODE_ENV=production node server && npm run watch",
+    "build": "rimraf dist && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config webpack/client.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack/server.js --progress --hide-modules",
     "test": "ava test/*.spec.js",
-    "lint": "npm run lint:js & npm run lint:css",
+    "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .js,.vue src",
     "lint:css": "stylelint src/**/*.css",
     "watch": "webpack --watch"
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/s-kobets/ssr-vue#readme",
   "dependencies": {
+    "express": "^4.15.4",
     "vue": "^2.4.2",
     "vue-server-renderer": "^2.4.2"
   },
@@ -51,13 +55,17 @@
     "precss": "^2.0.0",
     "require-extension-hooks": "^0.3.0",
     "require-extension-hooks-vue": "^0.4.0",
+    "rimraf": "^2.6.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "vue-loader": "^12.1.0",
     "vue-router": "^2.7.0",
+    "vue-ssr-webpack-plugin": "^3.0.0",
     "vue-template-compiler": "^2.3.3",
     "vuex": "^2.3.1",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }

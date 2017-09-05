@@ -1,16 +1,14 @@
 const path = require('path')
-const webpack = require('webpack')
-const postCssConfig = require('./postcss.config')
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
+const postCssConfig = require('../postcss.config')
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/dist/',
+    filename: '[name].js'
   },
-  node: {fs: 'empty'},
+
   module: {
     rules: [
       {
@@ -58,29 +56,6 @@ module.exports = {
   performance: {
     hints: false
   },
-  target: 'web',
+
   devtool: '#eval-source-map'
-}
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new ContextReplacementPlugin(/moment[\/\\]locale$/, /(en-gb|ru).js$/),
-
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
 }
