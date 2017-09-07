@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const baseConfig = require('./base.js')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(baseConfig, {
   entry: {
@@ -18,7 +19,11 @@ module.exports = merge(baseConfig, {
       minChunks: Infinity
     }),
     // Плагин генерирует `vue-ssr-client-manifest.json` в output-каталоге
-    new VueSSRClientPlugin()
+    new VueSSRClientPlugin(),
+
+    new BundleAnalyzerPlugin({
+      analyzerPort: 9999
+    })
   ]
 })
 
