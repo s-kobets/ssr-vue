@@ -7,13 +7,13 @@
     "dev": "node server",
     "start": "cross-env NODE_ENV=production node server && npm run watch",
     "build": "rimraf dist && npm run build:client && npm run build:server",
-    "build:client": "cross-env NODE_ENV=production webpack --config webpack/client.js --progress --hide-modules",
-    "build:server": "cross-env NODE_ENV=production webpack --config webpack/server.js --progress --hide-modules",
+    "build:client": "cross-env NODE_ENV=production webpack --config config/client.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config config/server.js --progress --hide-modules",
     "test": "ava test/*.spec.js",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .js,.vue src",
     "lint:css": "stylelint src/**/*.css",
-    "watch": "webpack --watch"
+    "watch": "webpack --config config/client.js --watch"
   },
   "repository": {
     "type": "git",

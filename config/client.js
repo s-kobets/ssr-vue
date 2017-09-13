@@ -19,11 +19,7 @@ module.exports = merge(baseConfig, {
       minChunks: Infinity
     }),
     // Плагин генерирует `vue-ssr-client-manifest.json` в output-каталоге
-    new VueSSRClientPlugin(),
-
-    new BundleAnalyzerPlugin({
-      analyzerPort: 9999
-    })
+    new VueSSRClientPlugin()
   ]
 })
 
@@ -46,6 +42,12 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    })
+  ])
+} else {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new BundleAnalyzerPlugin({
+      analyzerPort: 9999
     })
   ])
 }
