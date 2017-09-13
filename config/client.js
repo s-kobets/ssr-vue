@@ -14,10 +14,10 @@ module.exports = merge(baseConfig, {
     // Важно: это разбивает webpack runtime на главный фрагмент так,
     // чтобы асинхронные части могли быть внедрены сразу после него.
     // Это также позволяет лучше кэшировать код вашего приложения / вендоров.
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   minChunks: Infinity
+    // }),
     // Плагин генерирует `vue-ssr-client-manifest.json` в output-каталоге
     new VueSSRClientPlugin()
   ]

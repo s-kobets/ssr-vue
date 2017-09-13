@@ -19,8 +19,7 @@ server.get('*', (req, res) => {
   const app = new Vue({
     data: {
       url: req.url
-    },
-    template: `<div>Вы открыли URL: {{ url }}</div>`
+    }
   })
 
   renderer.renderToString(app, (err, html) => {
