@@ -1,10 +1,13 @@
 const Vue = require('vue')
-const server = require('express')()
+const express = require('express')
+const server = express()
 const { createBundleRenderer } = require('vue-server-renderer')
 
 const template = require('fs').readFileSync('./index.html', 'utf-8')
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+
+server.use(express.static(__dirname + '/')) // eslint-disable-line
 
 const renderer = createBundleRenderer(serverBundle, {
   runInNewContext: false, // рекомендуется

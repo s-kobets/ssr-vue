@@ -1,14 +1,10 @@
 <template>
-  <div class="title">
-    {{msg}}
-  </div>
+  <router-view/>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    msg: 'Hello SSR'
-  })
+  data: () => ({})
 }
 </script>
 
